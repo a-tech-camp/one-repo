@@ -1,63 +1,85 @@
-# Node
+# Web Javascript
 
-Node is a server side framework for running javascript. Node is built on top of Chrome's V8 Engine and as such will have similar performance.
+Browsers are capable of executing javascript code when they open websites. To run these files, open the html files in a browser. The instructions will guide you to the output.
 
-## Installation
-For node and npm install, visit the [website](https://nodejs.org/en/download/)
+## Requirements
+### Chrome (or equivalent Browser)
+Our browser of choice will be Google's [Chrome](https://www.google.com/chrome/). Regardless, there will be equivalent tools in Firefox and Safari.
 
-This will install the node cli
-- terminal on Mac
-- gitbash? command prompt? on windows
+### Visual Studio Code (or equivalent text editor)
+We need a text editor to edit our code. 
 
-### Confirming
-#### Versions
-```sh`
-node --version
-node -v # shorthand
+
+## Developer Tools
+Most modern browsers come with tools that allow developers to see into their code, both by seeing it in action and seeing details on its results
+
+To Open Developer Tools:
+ - View > Developer > Developer Tools
+Or
+ - Right Click Page > Inspect
+
+
+## HTML
+
+HTML is the skeleton of a website. It is explicitly the only file type that is required for a browser to show something.
+
+### Tags
+Tags define blocks of code. They are opened and closed
+```html
+<html> </html>
 ```
-should give a version where the first number is 12
 
-Even numbered versions are the stable version. Odd numbered versions are the Canary in the Coal Mine.
+Common Types
+ - <html> defines an html document
+ - <head> defines the meta
+ - <body> defines the skeleton
+ - <div> recatangles
+ - <p> paragraph
+ - <h1> biggest header
+ - <h2>...<h6> incrementally smaller headers
+ - <script> used to execute code
+ - [More](https://www.w3schools.com/tags/):
 
-### Shell
-```sh
-node
+#### Nesting
+Nesting is how we define attributes that are contained within others. 
+
+On a website text, images, etc. can be bound within a box on the page.
+```html
+<div>
+    <div></div>
+</div>
 ```
-should open up a shell where we can execute javascript code like `console.log('hello world');`
 
-### Troubleshooting
-#### Finding File
-```sh
-which node
+A website is even defined "higher" than whats being displayed
+```html
+<html>
+    <head>
+        <!-- meta goes here -->
+    </head>
+    <body>
+        <!-- Visualizations go here, ie div-->
+    </body>
+</html>
 ```
-should describe a directory
 
-#### Path
-The path is a variable responsible for loading in all binary files. Calling these binary files will execute them.
-To find the path:
-```sh
-echo $PATH
+Nested objects should be indented once.
+
+On a website we could imagine content defined within the navigation panel
+
+#### Attributes
+Tags have attributes that can descripe them. 
+
+```html
+<script type="text/javascript">
+</script>
 ```
-This string should be series of directories seperated by `:`. It should include the directory that contains the our node binary installation
+Here, the attribute is `type` and it's value is `"text/javascript"`
 
-#### More info
-[Npm's Common Errors](https://docs.npmjs.com/common-errors)
+### index.html
+Contains an example html file. It contains much more information than is necessary 
 
+## File seperation
 
-## Running javascript files
-To execute a javascipt file, you must be at the same directory as the file and type:
-```sh
-node index.js
-```
-You can replace index.js with your filename
+We can seperate our javascript code and out html code into two seperate files.
 
-## Debugging VS-Code
-Add the following extensions to vs-code:
- - [node debug (legacy)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.node-debug)
-
-Click on the symbol that looks like a Bug with a X on it. You should see a green triangle and a dropdown that has 3 options:
- - `Run File` will run the current file you are looking at
- - `Run Test` will run the current test you are looking at
- - `Run All Tests` will run all the tests
-
-Clicking the green triangle will run whichever command you would like. You can also add breakpoints to your code by clicking on the very left of a line and seeing a red dot pop up. These breakpoints will stop your code at that point so you can see the state of your application.
+This will be our standard going forward. This will make it easy to have one generic html app and restrict our work to the javascript file.
