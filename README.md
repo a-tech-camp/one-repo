@@ -1,63 +1,75 @@
-# Node
+# NPM
+Node Package Manager is responsible for importing and managing dependencies. It will install into `node_modules` folder. Although we create this folder, we do not actually commit this code to our repository. Instead we create two files that specify exactly what is in that code. Here we simply reference other people's code via version numbers. Thus we are always able to recreate our code in the exact same way.
 
-Node is a server side framework for running javascript. Node is built on top of Chrome's V8 Engine and as such will have similar performance.
 
-## Installation
-For node and npm install, visit the [website](https://nodejs.org/en/download/)
+## Installing NPM
+NPM should have been installed when we installed [Node](../0-node/README.md). You can refer back to the [website](https://nodejs.org/en/download/
 
-This will install the node cli
-- terminal on Mac
-- gitbash? command prompt? on windows
-
-### Confirming
-#### Versions
-```sh`
-node --version
-node -v # shorthand
+## NPX
+npx is a command that allows us to directly run the modules we have imported into `node_modules`. We will be able to call commands like
 ```
-should give a version where the first number is 12
+npx jest .
+```
+to call our testing suite (jest)
+or 
+```
+npx babel-node 1-courses/1-javascript/1-fundamentals/0-getting-started/1-node/index.js
+```
+to run a file through `babel-node`
 
-Even numbered versions are the stable version. Odd numbered versions are the Canary in the Coal Mine.
+## Packages
+Packages are defined in `package.json` and `package-lock.json`
 
-### Shell
+### Installing current repository
+We install the current specifications according to both `package.json` and `package-lock.json` through
 ```sh
-node
+npm ci
 ```
-should open up a shell where we can execute javascript code like `console.log('hello world');`
 
-### Troubleshooting
-#### Finding File
+### Adding new 
 ```sh
-which node
+npm install <package-name>
 ```
-should describe a directory
 
-#### Path
-The path is a variable responsible for loading in all binary files. Calling these binary files will execute them.
-To find the path:
+### Installing globally
 ```sh
-echo $PATH
+npm install -g <package-name>
 ```
-This string should be series of directories seperated by `:`. It should include the directory that contains the our node binary installation
+will install a package globally. Afterwards, we will be able to call `<package-name>` in our command-line. 
 
-#### More info
-[Npm's Common Errors](https://docs.npmjs.com/common-errors)
+For packages that are required for a repository, it's my belief, that it is better to call the node_modules package directly as this will limit the number of errors as a result of different versions. 
 
+### Package.json
+The package.json file is responsible for specifying desired imports. We specify our imports in a key value pair that looks as follows:
+```
+    "upper-case": "^1.1.3"
+```
+Upper-case is a packagee registered with [npm](https://www.npmjs.com/). It has many published versions specified by it's version tag.
 
-## Running javascript files
-To execute a javascipt file, you must be at the same directory as the file and type:
+To execute
 ```sh
-node index.js
+npm install # see if there is a package-lock.json file
 ```
-You can replace index.js with your filename
 
-## Debugging VS-Code
-Add the following extensions to vs-code:
- - [node debug (legacy)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.node-debug)
+### Pinning
+We specify a range of versions through pins
+ - `^1.2.3` latest minor version, so greater than `1.2.3` but less than `2.0.0`
+ - `~1.2.3` latest patch version, so greater than `1.2.3` but less than `1.3.0`
+ - `1.2.3` pinned version. Only use version `1.2.3`
 
-Click on the symbol that looks like a Bug with a X on it. You should see a green triangle and a dropdown that has 3 options:
- - `Run File` will run the current file you are looking at
- - `Run Test` will run the current test you are looking at
- - `Run All Tests` will run all the tests
 
-Clicking the green triangle will run whichever command you would like. You can also add breakpoints to your code by clicking on the very left of a line and seeing a red dot pop up. These breakpoints will stop your code at that point so you can see the state of your application.
+### Package-lock.json
+Since `package.json` can specify ranges, we want to take the general rule and get a consistent version number. This way when we run our code, it is independent of a new release from one of our dependencies. Senior devs will be responsible for updating  `package-lock.json` file by typing:
+```sh
+npm install
+```
+and ensuring that nothing is broken.
+
+### Semantic Versioning (semvar)
+Semantic versioning is responsible for specifiy how things should be versioned. It contains 3 numbers:
+ - `major`: number responsible for major changes. Not backwards compatible, tests likely changed
+ - `minor`: number responsible for minor changes. Should be backwards compatible and pass all tests.
+ - `patch`: patch numbers are updated when errors are discovered and we want fix them. We should always be using the latest patch of a software, and if we push out a patch, it should never break anything
+
+Companies have varying standards to adhering the 
+
