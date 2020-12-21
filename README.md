@@ -1,10 +1,10 @@
 # Repository Seed
-This is a template to seed repositories
+This Repository serves as a seed repository from which other repositories can be created.
 
-## Woj's Guide to Repository Management
-This repository follows a specific structure. Each commit should be made only on top of it's prerequisites. This way ideas can be traced
+## A Tech Camp's Guide to changing a repository
+This repository is a tool for thinking of changes in a repository as lessons that build that repository. Commits are added directly onto their prerequisites. Also, refer back to commit messages to see what was introduced.
 
 ## Documents
-A repository is a series of documents. These documents should have structure and purpose.
-  - [development.md](./development.md) - document responsible for getting a developer started in this repository
+Documents are fantastic ways of sharing information. Documents should have structure and a purpose that is very accessible.
 
+ - [development.md](./development.md)
