@@ -1,16 +1,3 @@
 {
-	"editor.insertSpaces": false,
-	"editor.detectIndentation": false,
-	"editor.wordWrap": "bounded",
-	"editor.wordWrapColumn": 100,
-	"explorer.sortOrder": "type",
-	"files.trimTrailingWhitespace": true,
-	"[json]": {
-		"editor.tabSize": 4,
-		"editor.insertSpaces": false,
-	},
-	"[markdown]": {
-		"editor.wordWrap": "bounded",
-		"editor.wordWrapColumn": 100,
-	},
+	"python.pythonPath": "${workspaceRoot}/venv/bin/python"
 }
